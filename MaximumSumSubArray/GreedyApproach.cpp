@@ -1,15 +1,19 @@
 #include <iostream>
 using namespace std;
-int Left,Right,MaxSum;
+int Left,Right,MaxSum=0;
+const int Nmax = 1000;
 void maxsum(int a[],int length){
-    int sum =0 ,ans = a[0];
-  //  int left=0,right=0,l=0;
-    for(int i=0;i<=length;i++){
-      //  left=i;
+    int sum =0 ;
+    int ans = a[0];
+   int left=0,right=0;
+    for(int i=0;i<length;i++){
+        if (sum==0) {
+            left=i;
+        }
         sum+=a[i];
         if(sum>ans){
-          //  left = l;
-          //  right = i;
+         
+            right = i;
             ans =sum;
            
         }
@@ -20,12 +24,18 @@ void maxsum(int a[],int length){
             
     }
     MaxSum = ans;
-   // Left = left;
-   // Right = right;
+    Left = left;
+    Right = right;
 }
 int main(){
-    int a[]={5,-6,3,4,-2,3,-3};
-    maxsum(a, 7);
-    cout<<MaxSum<<" "<<Left<<" "<<Right;
+    int length,array[Nmax];
+    cout<< "Enter the length of Array";
+    cin>>length;
+    cout<<"Enter elements of Array";
+    for(int i=0;i<length;i++)
+        cin>>array[i];
+
+    maxsum(array, 7);
+    cout<<"Max Sum is - "<<MaxSum<<" Left- "<<Left<<" Right- "<<Right;
     return 0;
 }
