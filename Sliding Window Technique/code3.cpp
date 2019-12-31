@@ -15,9 +15,11 @@ int slidingWindow(){
         return n;
     if(--fr[a[Right--]]==0)
         counter--;
+    ans = Right-Left+1;
     for(Left=2;Left<=n;Left++){
-        fr[a[Left-1]]=0;
-        while(Right<=n){
+        if(--fr[a[Left-1]]==0)
+            counter--;
+        while(Right<n){
             Right++;
             if(++fr[a[Right]]==1)
                 counter++;
@@ -25,7 +27,7 @@ int slidingWindow(){
                 break;
         }
         if(counter<=k)
-            return n-Left+1;
+            return max(n-Left+1,ans);
         if(--fr[a[Right--]] ==0)
             counter--;
         ans=max(Right-Left+1,ans);        
