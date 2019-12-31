@@ -23,7 +23,6 @@ int longestConsecutiveArray(){
 }
 int main(){
     
-    
     cout <<"Enter the Length of Array : ";
     cin>>n;
     cout<<"Enter the elements ";
